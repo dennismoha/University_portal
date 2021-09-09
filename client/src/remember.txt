@@ -1,0 +1,3 @@
+- remove metus css and js files
+- remove unused sidebar collapse from main.js
+- remove unused font awesome code

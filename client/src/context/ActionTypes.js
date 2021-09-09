@@ -1,0 +1,23 @@
+export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
+export const REGISTER_FAIL = "REGISTER_FAIL";
+export const STUDENT_LOADED = "STUDENT_LOADED";
+export const AUTH_ERROR = "AUTH_ERROR";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAIL = "LOGIN_FAIL";
+export const LOGOUT = "LOGOUT";
+export const CLEAR_ERRORS = "CLEAR_ERRORS";
+export const USER_LOADED = "USER_LOADED";
+export const LOADING = "LOADING";
+export const CREATE_PROFILE_SUCCESS = "CREATE_PROFILE_SUCCESS";
+export const CREATE_PROFILE_FAIL = "CREATE_PROFILE_FAIL";
+export const SET_EDIT_MODE = "SET_EDIT_MODE";
+export const CLEAR_EDIT_MODE = "CLEAR_EDIT_MODE";
+export const SEND_DOCS = "SEND_DOCS";
+export const SEND_DOCS_FAIL = "SEND_DOCS_FAIL";
+export const CLEAR_SUCCESS = "CLEAR_SUCCESS";
+
+/* 
+    @RULE: UTILITIES ACTION TYPES
+*/
+
+export const TOGGLE_SIDEBAR = "TOGGLE_SIDEBAR";
