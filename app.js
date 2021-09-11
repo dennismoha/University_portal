@@ -5,7 +5,6 @@ var path = require("path");
 const dotenv = require("dotenv").config();
 const expressValidator = require("express-validator");
 const cors = require('cors')
-const path = require('path')
 
 var AdminRouter = require("./routes/Admin/Auth");
 var authRouter = require("./routes/auth");
