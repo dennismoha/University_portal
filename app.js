@@ -5,6 +5,7 @@ var path = require("path");
 const dotenv = require("dotenv").config();
 const expressValidator = require("express-validator");
 const cors = require('cors')
+const path = require('path')
 
 var AdminRouter = require("./routes/Admin/Auth");
 var authRouter = require("./routes/auth");
@@ -42,7 +43,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(expressValidator());
 
+app.use(express.static(path.join(__dirname, "/client/build")));
 app.use(express.static(path.join(__dirname, "public")));
+
 
 app.use("/api/Admin/Auth", AdminRouter);
 app.use("/api/auth", authRouter);
