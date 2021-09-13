@@ -29,6 +29,7 @@ const Login = () => {
          clearErrors();
        }, 9000);
      }
+     // eslint-disable-next-line
    }, [isAuthenticated, error]);
 
    const onsubmit = (e) => {

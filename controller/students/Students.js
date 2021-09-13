@@ -58,14 +58,14 @@ exports.uploadStudentDocs = async(req, res, next) => {
             errors.push('error')
             throw new Error(errors)
         }
-        conn = await db.getConnection();
+        let conn = await db.getConnection();
         const addLinks = await conn.execute("call career.addDocsLinks(?,?,?,?)", [req.userId, ...filename]);
         res.status(200).json({ message: "success" });
 
     } catch (error) {
         console.log(error)
         if (error || errors.length !== 0) {
-            res.status(400).json({ message: "error" })
+            res.status(400).json({ message: "error", error: "error" })
         }
 
     }

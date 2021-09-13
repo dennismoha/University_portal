@@ -8,10 +8,11 @@ import ProfileNavbar from './ProfileNavbar'
 
 const Profile = () => {
     const authContext = useContext(studentRegisterContext);
-  const {user, loadUser} = authContext
+  const {user} = authContext
  
     useEffect(()=>{
-      authContext.loadUser()
+      authContext.loadUser();
+      // eslint-disable-next-line 
     },[])
     return (
       <>

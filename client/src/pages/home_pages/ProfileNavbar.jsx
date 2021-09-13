@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import "../../assets/css/profile_page/profile_navbar.css";
 import "../../assets/js/profile/offcanvas.js";
 import { NavLink } from "react-router-dom";
@@ -24,17 +24,17 @@ const ProfileNavbar = (props) => {
         >
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
-              <a className="nav-link" href="#">
+              <a className="nav-link"href="/#">
                 Dashboard <span className="sr-only">(current)</span>
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <a className="nav-link"href="/#">
                 view companies
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <a className="nav-link"href="/#">
                 view jobs
               </a>
             </li>
@@ -57,12 +57,12 @@ const ProfileNavbar = (props) => {
 
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <a className="nav-link"href="/#">
                 Contact us
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <a className="nav-link"href="/#">
                 inbox
               </a>
             </li>
@@ -71,8 +71,7 @@ const ProfileNavbar = (props) => {
                 className="nav-link dropdown-toggle"
                 href="/"
                 id="dropdown01"
-                data-toggle="dropdown"
-                aria-haspopup="true"
+                data-toggle="dropdown"               
                 aria-expanded="false"
               >
                 Settings
@@ -81,10 +80,10 @@ const ProfileNavbar = (props) => {
                 <NavLink className="dropdown-item" to="/profile/viewprofile">
                   Edit profile
                 </NavLink>
-                <a className="dropdown-item" href="#">
+                <a className="dropdown-item"href="/#">
                   logout
                 </a>
-                <a className="dropdown-item" href="#">
+                <a className="dropdown-item"href="/#">
                   inbox
                 </a>
               </div>
@@ -95,34 +94,34 @@ const ProfileNavbar = (props) => {
 
       {/* <div className="nav-scroller bg-white box-shadow">
           <nav className="nav nav-underline">
-            <a className="nav-link active" href="#">
+            <a className="nav-link active"href="/#">
               Dashboard
             </a>
-            <a className="nav-link" href="#">
+            <a className="nav-link"href="/#">
               Friends
               <span className="badge badge-pill bg-light align-text-bottom">
                 27
               </span>
             </a>
-            <a className="nav-link" href="#">
+            <a className="nav-link"href="/#">
               Explore
             </a>
-            <a className="nav-link" href="#">
+            <a className="nav-link"href="/#">
               Suggestions
             </a>
-            <a className="nav-link" href="#">
+            <a className="nav-link"href="/#">
               Link
             </a>
-            <a className="nav-link" href="#">
+            <a className="nav-link"href="/#">
               Link
             </a>
-            <a className="nav-link" href="#">
+            <a className="nav-link"href="/#">
               Link
             </a>
-            <a className="nav-link" href="#">
+            <a className="nav-link"href="/#">
               Link
             </a>
-            <a className="nav-link" href="#">
+            <a className="nav-link"href="/#">
               Link
             </a>
           </nav>

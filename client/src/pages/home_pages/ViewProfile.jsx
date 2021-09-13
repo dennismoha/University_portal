@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import "../../assets/css/viewprofile.css";
 import studentRegisterContext from "../../context/Register/studentRegisterContext";
 import ProfileNavbar from "./ProfileNavbar";
-import Axios from 'axios'
+
 
 const ViewProfile = () => {
   // @RULE: UPLOAD FILES STATE
@@ -16,15 +16,13 @@ const ViewProfile = () => {
 
   // @RULE : USE CONTEXT
   const {
-    editPayload,
-    clearEditPayload,
+    editPayload,    
     user,
     createProfile,
     error,
     loadUser,
     clearErrors,
-    sendDocs,
-    links,
+    sendDocs,  
     success,
     clear_success,
   } = useContext(studentRegisterContext);
@@ -55,12 +53,13 @@ const ViewProfile = () => {
   };
 
   useEffect(() => {
-    if(docsError !== null) {
-      setTimeout(()=>{
-         setDocsError(null)
-      },3000)
-    };
-    clear_success()
+    if (docsError !== null) {
+      setTimeout(() => {
+        setDocsError(null);
+      }, 3000);
+    }
+    clear_success();
+    // eslint-disable-next-line
   }, [docsError,success]);
 
   // @RULE: CHECK IF PAYLOAD IS EMPTY
@@ -97,6 +96,7 @@ const ViewProfile = () => {
         finish_date: "",
       });
     }
+    // eslint-disable-next-line
   }, [user]);
 
   // END OF CHECKING IF PAYLOAD IS EMPTY
@@ -143,6 +143,7 @@ const ViewProfile = () => {
 
   useEffect(() => {
     loadUser();
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -151,6 +152,7 @@ const ViewProfile = () => {
         clearErrors();
       }, 9000);
     }
+    // eslint-disable-next-line
   }, [error]);
 
   //   let {
@@ -257,25 +259,25 @@ const ViewProfile = () => {
                 </div>
                 <div className="card-footer text-center">
                   <a
-                    href="javascript:void()"
+                     href="/#"
                     className="btn-social btn-facebook waves-effect waves-light m-1"
                   >
                     <i className="fa fa-facebook" />
                   </a>
                   <a
-                    href="javascript:void()"
+                     href="/#"
                     className="btn-social btn-google-plus waves-effect waves-light m-1"
                   >
                     <i className="fa fa-google-plus" />
                   </a>
                   <a
-                    href="javascript:void()"
+                     href="/#"
                     className="list-inline-item btn-social btn-behance waves-effect waves-light"
                   >
                     <i className="fa fa-behance" />
                   </a>
                   <a
-                    href="javascript:void()"
+                     href="/#"
                     className="list-inline-item btn-social btn-dribbble waves-effect waves-light"
                   >
                     <i className="fa fa-dribbble" />
@@ -290,7 +292,7 @@ const ViewProfile = () => {
                 <ul className="nav nav-pills nav-pills-primary nav-justified">
                   <li className="nav-item">
                     <a
-                      href="javascript:void();"
+                    href="/#"
                       data-target="#profile"
                       data-toggle="pill"
                       className="nav-link active show"
@@ -301,7 +303,7 @@ const ViewProfile = () => {
                   </li>
                   <li className="nav-item">
                     <a
-                      href="javascript:void();"
+                    href="/#"
                       data-target="#messages"
                       data-toggle="pill"
                       className="nav-link"
@@ -324,7 +326,7 @@ const ViewProfile = () => {
                   </li>
                   <li className="nav-item">
                     <a
-                      href="javascript:void();"
+                    href="/#"
                       data-target="#edit_schooldocs"
                       data-toggle="pill"
                       className="nav-link"
@@ -357,49 +359,49 @@ const ViewProfile = () => {
                       <div className="col-md-6">
                         <h6>Skills</h6>
                         <a
-                          href="javascript:void();"
+                        href="/#"
                           className="badge badge-dark badge-pill"
                         >
                           html5
                         </a>
                         <a
-                          href="javascript:void();"
+                        href="/#"
                           className="badge badge-dark badge-pill"
                         >
                           react
                         </a>
                         <a
-                          href="javascript:void();"
+                        href="/#"
                           className="badge badge-dark badge-pill"
                         >
                           codeply
                         </a>
                         <a
-                          href="javascript:void();"
+                        href="/#"
                           className="badge badge-dark badge-pill"
                         >
                           angularjs
                         </a>
                         <a
-                          href="javascript:void();"
+                        href="/#"
                           className="badge badge-dark badge-pill"
                         >
                           css3
                         </a>
                         <a
-                          href="javascript:void();"
+                        href="/#"
                           className="badge badge-dark badge-pill"
                         >
                           jquery
                         </a>
                         <a
-                          href="javascript:void();"
+                        href="/#"
                           className="badge badge-dark badge-pill"
                         >
                           bootstrap
                         </a>
                         <a
-                          href="javascript:void();"
+                        href="/#"
                           className="badge badge-dark badge-pill"
                         >
                           responsive-design

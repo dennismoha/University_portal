@@ -25,28 +25,20 @@ const Register = () => {
       setStudentDetails({ ...studentDetails, [e.target.name]: e.target.value });
     };
 
-    const { register, loading, error, clearErrors, success, isAuthenticated } =
+    const { register,  error, clearErrors, success} =
       useContext(studentRegisterContext);
 
     useEffect(() => {
       return () => {
         clearErrors();
       };
+      // eslint-disable-next-line
     }, []);
 
-    const {
-      first_name,
-      last_name,
+    const {      
       Email,
       reg_num,
-      campus,
-      college,
-      course,
-      discipline,
-      gender,
-      age,
-      enroll_date,
-      finish_date,
+     
       password,
       confirm_password,
     } = studentDetails;
