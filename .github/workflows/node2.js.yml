@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x,14.x,16.x]
+        node-version: [14.x,16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -29,7 +29,8 @@ jobs:
           npm i
           cd client
           npm i
-          npm run build           
+          npm run build     
+          cd ..      
           pm2 stop 1
           pm2 start 1
           pm2 save
