@@ -29,7 +29,8 @@ jobs:
           npm i
           cd client
           npm i
-          npm run build           
+          npm run build    
+          cd ..       
           pm2 stop 1
           pm2 start 1
           pm2 save
