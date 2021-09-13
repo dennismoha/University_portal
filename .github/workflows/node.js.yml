@@ -30,7 +30,7 @@ jobs:
           cd client
           npm i
           npm run build 
-          cd ../
+          cd ..
           pm2 stop 1
           pm2 start 1
           pm2 save
