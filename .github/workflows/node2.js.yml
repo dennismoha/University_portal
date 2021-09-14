@@ -27,7 +27,7 @@ jobs:
         node-version: ${{ matrix.node-version }}       
     - run: 
           npm i
-          cd client
+          sudo cd client
           npm i
           npm run build               
           pm2 stop 1
