@@ -10,11 +10,14 @@ import Register from './pages/auth/Register';
 import NotFound from './pages/Error/NotFound';
 import ForgotPassword from './pages/auth/ForgotPassword';
 import StudentRegisterState from './context/Register/StudentRegisterState';
-import Profile from './pages/home_pages/Profile';
+// import Profile from './pages/home_pages/Profile';
+import Profile from './pages/home_pages/ProfileLanding';
 // import ProfileSettings  from './pages/home_pages/ProfileSettings';
 import PrivateRoute from './util/PrivateRoute';
 import {setAuthToken} from './axios/SetAuthToken'
 import ViewProfile from './pages/home_pages/ViewProfile';
+import Navbar from './layout/Navbar';
+
 
 
 if (localStorage.token) {
@@ -27,6 +30,7 @@ function App() {
       <StudentRegisterState>
         <UtilState>
           <BrowserRouter>
+          <Navbar/>
             <Switch>
               <Route path="/" exact component={Home} />
              

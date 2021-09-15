@@ -2,6 +2,7 @@ import React,{useState, useEffect,useContext} from 'react'
 import {NavLink} from 'react-router-dom'
 import studentRegisterContext from '../../context/Register/studentRegisterContext'
 import { useHistory } from "react-router-dom";
+import {Styles} from '../../assets/css/auth/Style.styles.js'
 
 
 const Login = () => {
@@ -41,7 +42,7 @@ const Login = () => {
      clearErrors();
    };
     return (
-      <>
+      <Styles>
         <div className="error-pagewrap">
           <div className="error-page-int">
             <div className="text-center m-b-md custom-login">
@@ -116,7 +117,7 @@ const Login = () => {
             </div>
           </div>
         </div>
-      </>
+      </Styles>
     );
 }
 

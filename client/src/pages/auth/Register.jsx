@@ -1,5 +1,6 @@
 import React,{useEffect,useContext,useState} from 'react'
 import studentRegisterContext from '../../context/Register/studentRegisterContext';
+import {Styles} from '../../assets/css/auth/Style.styles.js'
 
 
 const Register = () => {
@@ -57,7 +58,7 @@ const Register = () => {
 
 
     return (
-      <div>
+      <Styles>
         <div className="error-pagewrap">
           <div className="error-page-int">
             <div className="text-center custom-login">
@@ -144,7 +145,7 @@ const Register = () => {
             </div>
           </div>
         </div>
-      </div>
+      </Styles>
     );
 }
 

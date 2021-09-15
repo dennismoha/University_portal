@@ -187,7 +187,7 @@ const ViewProfile = () => {
   };
   return (
     <>
-      <ProfileNavbar />
+    
       <div className="container">
         <div className="row">
           <div className="col-lg-4">

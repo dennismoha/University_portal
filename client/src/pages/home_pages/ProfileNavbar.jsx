@@ -1,6 +1,4 @@
 import React from "react";
-import "../../assets/css/profile_page/profile_navbar.css";
-import "../../assets/js/profile/offcanvas.js";
 import { NavLink } from "react-router-dom";
 
 const ProfileNavbar = (props) => {

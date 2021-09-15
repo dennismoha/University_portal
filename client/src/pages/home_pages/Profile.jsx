@@ -16,7 +16,7 @@ const Profile = () => {
     },[])
     return (
       <>
-        <ProfileNavbar />
+        
         <div style={{ marginTop: "100px" }} />
         <div className="container">
           <div className="page-profile">
