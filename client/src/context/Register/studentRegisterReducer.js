@@ -14,6 +14,7 @@ import {
     SEND_DOCS,
     SEND_DOCS_FAIL,
     CLEAR_SUCCESS,
+    FILE_PATHS,
 } from "../ActionTypes";
 
 export default (state, action) => {
@@ -56,6 +57,12 @@ export default (state, action) => {
                 isAuthenticated: true,
                 loading: false,
                 user: action.payload,
+            };
+        case FILE_PATHS:
+            console.log('file paths action payload ', action.payload)
+            return {
+                ...state,
+                filepaths: action.payload,
             };
 
             // case LOADING:

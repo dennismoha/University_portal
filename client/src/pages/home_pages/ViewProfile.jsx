@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import "../../assets/css/viewprofile.css";
 import studentRegisterContext from "../../context/Register/studentRegisterContext";
-import ProfileNavbar from "./ProfileNavbar";
+// import ProfileNavbar from "./ProfileNavbar";
 
 
 const ViewProfile = () => {
@@ -16,15 +16,17 @@ const ViewProfile = () => {
 
   // @RULE : USE CONTEXT
   const {
-    editPayload,    
+    editPayload,
     user,
     createProfile,
     error,
     loadUser,
     clearErrors,
-    sendDocs,  
+    sendDocs,
     success,
     clear_success,
+    filepaths,
+    fetch_file_paths,
   } = useContext(studentRegisterContext);
 
   const filesSelectedHandler = (e) => {
@@ -128,6 +130,12 @@ const ViewProfile = () => {
     finish_date,
   } = studentDetails;
 
+     useEffect(() => {      
+       fetch_file_paths();
+       // eslint-disable-next-line
+     }, []);
+
+
   const setEditHandler = (data) => {
     console.log("data is:::", data);
     editPayload(data);
@@ -187,7 +195,6 @@ const ViewProfile = () => {
   };
   return (
     <>
-    
       <div className="container">
         <div className="row">
           <div className="col-lg-4">
@@ -230,7 +237,7 @@ const ViewProfile = () => {
                         <small>{user ? user.Emails : "email"}</small>
                       </div>
                     </li>
-                    <li className="list-group-item">
+                    {/* <li className="list-group-item">
                       <div className="list-icon">
                         <i className="fa fa-globe" />
                       </div>
@@ -238,7 +245,7 @@ const ViewProfile = () => {
                         <span>www.example.com</span>
                         <small>Website Address</small>
                       </div>
-                    </li>
+                    </li> */}
                   </ul>
                   <div className="row text-center mt-4">
                     <div className="col p-2">
@@ -259,25 +266,25 @@ const ViewProfile = () => {
                 </div>
                 <div className="card-footer text-center">
                   <a
-                     href="/#"
+                    href="/#"
                     className="btn-social btn-facebook waves-effect waves-light m-1"
                   >
                     <i className="fa fa-facebook" />
                   </a>
                   <a
-                     href="/#"
+                    href="/#"
                     className="btn-social btn-google-plus waves-effect waves-light m-1"
                   >
                     <i className="fa fa-google-plus" />
                   </a>
                   <a
-                     href="/#"
+                    href="/#"
                     className="list-inline-item btn-social btn-behance waves-effect waves-light"
                   >
                     <i className="fa fa-behance" />
                   </a>
                   <a
-                     href="/#"
+                    href="/#"
                     className="list-inline-item btn-social btn-dribbble waves-effect waves-light"
                   >
                     <i className="fa fa-dribbble" />
@@ -290,7 +297,7 @@ const ViewProfile = () => {
             <div className="card z-depth-3">
               <div className="card-body">
                 <ul className="nav nav-pills nav-pills-primary nav-justified">
-                  <li className="nav-item">
+                  {/* <li className="nav-item">
                     <a
                     href="/#"
                       data-target="#profile"
@@ -300,10 +307,10 @@ const ViewProfile = () => {
                       <i className="icon-user" />{" "}
                       <span className="hidden-xs">Profile</span>
                     </a>
-                  </li>
+                  </li> */}
                   <li className="nav-item">
                     <a
-                    href="/#"
+                      href="/#"
                       data-target="#messages"
                       data-toggle="pill"
                       className="nav-link"
@@ -326,7 +333,7 @@ const ViewProfile = () => {
                   </li>
                   <li className="nav-item">
                     <a
-                    href="/#"
+                      href="/#"
                       data-target="#edit_schooldocs"
                       data-toggle="pill"
                       className="nav-link"
@@ -337,7 +344,7 @@ const ViewProfile = () => {
                   </li>
                 </ul>
                 <div className="tab-content p-3">
-                  <div className="tab-pane active show" id="profile">
+                  {/* <div className="tab-pane active show" id="profile">
                     <h5 className="mb-3">User Profile</h5>
                     <div className="row">
                       <div className="col-md-6">
@@ -455,19 +462,19 @@ const ViewProfile = () => {
                                   ? user.disciplines
                                   : " update discipline details"}{" "}
                               </td>
-                            </tr>
-                            {/* <tr>
+                            </tr> */}
+                  {/* <tr>
                               <td>
                                 <strong>Skell</strong> deleted his post Look at
                                 Why this is.. in <strong>`Discussions`</strong>
                               </td>
                             </tr> */}
-                          </tbody>
+                  {/* </tbody>
                         </table>
                       </div>
-                    </div>
-                    {/*/row*/}
-                  </div>
+                    </div> */}
+                  {/*/row*/}
+                  {/* </div> */}
                   <div className="tab-pane" id="messages">
                     <div
                       className="alert alert-info alert-dismissible"
@@ -707,7 +714,13 @@ const ViewProfile = () => {
                   {/* start editing school docs */}
 
                   <div className="tab-pane" id="edit_schooldocs">
-                    <div className="form-group row">
+                    <div
+                      className="form-group row"
+                      style={{
+                        display:
+                          filepaths[0].split("#")[0] === "cover_letter" ? "none" : null,
+                      }}
+                    >
                       <label className="col-lg-3 col-form-label form-control-label">
                         Curriculum vitae
                       </label>
@@ -721,7 +734,15 @@ const ViewProfile = () => {
                       </div>
                     </div>
                     {/* cover letter */}
-                    <div className="form-group row">
+                    <div
+                      className="form-group row"
+                      style={{
+                        display:
+                          filepaths[1].split("#")[0] === "cover_letter"
+                            ? "none"
+                            : null,
+                      }}
+                    >
                       <label className="col-lg-3 col-form-label form-control-label">
                         Cover letter
                       </label>
@@ -736,7 +757,13 @@ const ViewProfile = () => {
                     </div>
 
                     {/* resume */}
-                    <div className="form-group row">
+                    <div
+                      className="form-group row"
+                      style={{
+                        display:
+                          filepaths[2].split("#")[2] === "certificates" ? "none" : null,
+                      }}
+                    >
                       <label className="col-lg-3 col-form-label form-control-label">
                         certificate
                       </label>

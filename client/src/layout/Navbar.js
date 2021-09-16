@@ -33,50 +33,51 @@ const Navbar = (props) => {
 
   const authLinks = (
     <Fragment>
-          <li className="nav-item">
-              <a className="nav-link active" href="/#">
-                jobs
-              </a>
-            </li>
-          <li className="nav-item">
-              <a className="nav-link active" href="/#">
-                contact admin
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link active" href="/#">
-                Inbox <span class="badge  badge-pill badge-light">9</span>
-                <span class="sr-only">unread messages</span>
-              </a>
-            </li>
-            <li className="nav-item">
-              <div class="btn-group">
-                <NavLink
-                  to="/profile"
-                  type="button"
-                  class="btn btn-secondary dropdown-toggle"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  profile
-                </NavLink>
-                <div class="dropdown-menu dropdown-menu-right">
-                <NavLink to='/profile' class="dropdown-item" type="button">
-                    view profile
-                  </NavLink>
-                  <NavLink to="/profile/viewprofile" class="dropdown-item" type="button" >
-                    profile settings
-                  </NavLink>
-                  
-                  <button onClick={onLogout} class="dropdown-item" type="button">
-                    logout
-                  </button>
-                </div>
-              </div>
-            </li> 
+      <li className="nav-item">
+        <a className="nav-link active" href="/#">
+          jobs
+        </a>
+      </li>
+      <li className="nav-item">
+        <a className="nav-link active" href="/#">
+          contact admin
+        </a>
+      </li>
+      <li className="nav-item">
+        <a className="nav-link active" href="/#">
+          Inbox <span class="badge  badge-pill badge-light">9</span>
+          <span class="sr-only">unread messages</span>
+        </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="navbarDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          settings
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <NavLink to="/profile" class="dropdown-item">
+            view profile
+          </NavLink>
+          <NavLink to="/profile/viewprofile" class="dropdown-item">
+            profile Edit
+          </NavLink>
+          <div class="dropdown-divider"></div>
+          <a onClick={onLogout} class="dropdown-item" href="/#">
+            Logout
+          </a>
+        </div>
+      </li>
+
+     
     </Fragment>
-  )
+  );
 
 
   return (

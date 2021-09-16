@@ -49,7 +49,7 @@ exports.signUp = async(req, res, sql) => {
     let { password, reg_num } = querBody
     console.log(querBody)
     try {
-        conn = await db.getConnection();
+        let conn = await db.getConnection();
         const [results] = await conn.execute(
             checkUser, [...quer]
         );

@@ -15,6 +15,8 @@ export const CLEAR_EDIT_MODE = "CLEAR_EDIT_MODE";
 export const SEND_DOCS = "SEND_DOCS";
 export const SEND_DOCS_FAIL = "SEND_DOCS_FAIL";
 export const CLEAR_SUCCESS = "CLEAR_SUCCESS";
+export const FILE_PATHS = "FILE_PATHS";
+export const FILE_PATHS_ERROR = "FILE_PATHS_ERROR";
 
 /* 
     @RULE: UTILITIES ACTION TYPES

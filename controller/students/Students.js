@@ -4,6 +4,8 @@
 
 
 const db = require("../../config/db");
+const fs = require('fs/promises')
+const path = require('path');
 
 
 // @RULE : CREATE STUDENT PROFILE
@@ -39,7 +41,7 @@ exports.uploadStudentDocs = async(req, res, next) => {
             if (req.files.cv) {
                 console.log(
                     "req.file:::::::::::::::::::::",
-                    req.files.cv[0].filename
+                    req.files.cv[0].filename.length
                 );
                 filename.push(req.files.cv[0].filename);
             }
@@ -59,6 +61,7 @@ exports.uploadStudentDocs = async(req, res, next) => {
             throw new Error(errors)
         }
         let conn = await db.getConnection();
+        console.log('the filename is ', [...filename])
         const addLinks = await conn.execute("call career.addDocsLinks(?,?,?,?)", [req.userId, ...filename]);
         res.status(200).json({ message: "success" });
 
@@ -71,6 +74,48 @@ exports.uploadStudentDocs = async(req, res, next) => {
     }
 
 }
+
+// @ Rule : CHECK IF FILE EXISTS
+
+async function exists(path) {
+    try {
+        await fs.access(path);
+        return true;
+    } catch {
+        return false;
+    }
+}
+
+
+// @RULE: FETCH PDF
+exports.checkFileExists = async(req, res, next) => {
+    const folders = ["cover_letter", "cv", "certificates"];
+    let initialPath = path.dirname(require.main.filename);
+    let paths = [];
+
+    try {
+        for (let i = 0; i <= folders.length; i++) {
+            let pat =
+                initialPath +
+                "/" +
+                "public/images/docs/" +
+                `${req.reg_num}/` +
+                folders[i] +
+                `/`;
+            let results = await exists(pat);
+            if (results) {
+                paths.push(folders[i] + "# " + pat);
+            }
+
+        }
+        return res.status(200).json(paths);
+    } catch (error) {
+        console.log('error')
+        return res.status(400).json({ message: "error fetching paths" })
+    }
+
+}
+
 
 
 // scp career.sql sample @00 .00 .00 .00: /home/me /
