@@ -26,10 +26,10 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}       
     - run: 
-          npm i
-          sudo cd client
-          npm i
-          npm run build               
+          sudo npm i
+          cd client
+          sudo npm i
+          sudo npm run build               
           pm2 stop 1
           pm2 start 1
           pm2 save
