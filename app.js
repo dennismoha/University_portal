@@ -9,7 +9,7 @@ const cors = require('cors')
 var AdminRouter = require("./routes/Admin/Auth");
 var authRouter = require("./routes/auth");
 const schoolRouter = require("./routes/school/School");
-const studentRouter = require("./routes/student/Student");
+// const studentRouter = require("./routes/student/Student");
 
 var app = express();
 app.use(cors({ origin: true, credentials: true }));

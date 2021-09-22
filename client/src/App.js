@@ -17,6 +17,10 @@ import PrivateRoute from './util/PrivateRoute';
 import {setAuthToken} from './axios/SetAuthToken'
 import ViewProfile from './pages/home_pages/ViewProfile';
 import Navbar from './layout/Navbar';
+import DisplayResume from './pages/resume/DisplayResume';
+import CreateResume from './pages/resume/editresume/CreateResume';
+import ResumeState from './context/resume/ResumeState';
+
 
 
 
@@ -27,27 +31,45 @@ if (localStorage.token) {
 function App() {
   return (
     <>
-      <StudentRegisterState>
-        <UtilState>
-          <BrowserRouter>
-          <Navbar/>
-            <Switch>
-              <Route path="/" exact component={Home} />
-             
-              <Route path="/login" exact component={Login} />
-              <Route path="/register" exact component={Register} />
-              <Route path="/recoverpassword" exact component={ForgotPassword} />
-              <PrivateRoute path="/profile/viewprofile" exact component={ViewProfile} />
-           
-              <PrivateRoute path="/profile" exact component={Profile} />
+      <ResumeState>
+        <StudentRegisterState>
+          <UtilState>
+            <BrowserRouter>
+              <Navbar />
+              <Switch>
+                <Route path="/" exact component={Home} />
 
-          
+                <Route path="/login" exact component={Login} />
+                <Route path="/register" exact component={Register} />
+                <Route
+                  path="/recoverpassword"
+                  exact
+                  component={ForgotPassword}
+                />
+                <PrivateRoute
+                  path="/profile/viewprofile"
+                  exact
+                  component={ViewProfile}
+                />
 
-              <Route path="*" exact={true} component={NotFound} />
-            </Switch>
-          </BrowserRouter>
-        </UtilState>
-      </StudentRegisterState>
+                <PrivateRoute path="/profile" exact component={Profile} />
+                <PrivateRoute
+                  path="/viewResume"
+                  exact
+                  component={DisplayResume}
+                />
+                <PrivateRoute
+                  path="/createresume"
+                  exact
+                  component={CreateResume}
+                />
+
+                <Route path="*" exact={true} component={NotFound} />
+              </Switch>
+            </BrowserRouter>
+          </UtilState>
+        </StudentRegisterState>
+      </ResumeState>
 
       {/* <Test /> */}
     </>

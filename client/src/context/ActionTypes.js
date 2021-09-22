@@ -17,6 +17,7 @@ export const SEND_DOCS_FAIL = "SEND_DOCS_FAIL";
 export const CLEAR_SUCCESS = "CLEAR_SUCCESS";
 export const FILE_PATHS = "FILE_PATHS";
 export const FILE_PATHS_ERROR = "FILE_PATHS_ERROR";
+export const CREATE_RESUME = "CREATE_RESUME";
 
 /* 
     @RULE: UTILITIES ACTION TYPES

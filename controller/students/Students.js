@@ -116,6 +116,13 @@ exports.checkFileExists = async(req, res, next) => {
 
 }
 
+// @RULE: CREATE STUDENT RESUME.
+
+exports.createResume = (req, res) => {
+    console.log('reached the resume creation section', req.body)
+    return res.status(200).json({ message: "reached the resume creation section" })
+}
+
 
 
 // scp career.sql sample @00 .00 .00 .00: /home/me /

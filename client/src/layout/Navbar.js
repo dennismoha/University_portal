@@ -39,12 +39,22 @@ const Navbar = (props) => {
         </a>
       </li>
       <li className="nav-item">
-        <a className="nav-link active" href="/#">
+        <NavLink className="nav-link" to="/viewResume">
+          View Resume
+        </NavLink>
+      </li>
+      <li className="nav-item">
+        <NavLink className="nav-link" to="/createresume">
+          Create Resume
+        </NavLink>
+      </li>
+      <li className="nav-item">
+        <a className="nav-link" href="/#">
           contact admin
         </a>
       </li>
       <li className="nav-item">
-        <a className="nav-link active" href="/#">
+        <a className="nav-link " href="/#">
           Inbox <span class="badge  badge-pill badge-light">9</span>
           <span class="sr-only">unread messages</span>
         </a>
@@ -52,7 +62,7 @@ const Navbar = (props) => {
       <li class="nav-item dropdown">
         <a
           class="nav-link dropdown-toggle"
-          href="#"
+          href="/#"
           id="navbarDropdown"
           role="button"
           data-toggle="dropdown"
@@ -74,8 +84,6 @@ const Navbar = (props) => {
           </a>
         </div>
       </li>
-
-     
     </Fragment>
   );
 

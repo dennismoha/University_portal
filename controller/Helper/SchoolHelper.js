@@ -5,6 +5,7 @@ const auth = require("../Helper/AuthHelper");
 
 exports.Edit = async(req, res, sql) => {
     let { query, queryParams, message } = sql
+    let conn;
 
     try {
         conn = await db.getConnection();

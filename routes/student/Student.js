@@ -72,6 +72,7 @@ router.post("/createprofile", Auth, Students.createStudentProfile);
 // @RULE: POST MEDIA
 router.post("/addmedia", Auth, cpUpload, Students.uploadStudentDocs);
 router.get('/checkDocs', Auth, Students.checkFileExists)
+router.post("/createresume", Auth, Students.createResume);
 
 
 

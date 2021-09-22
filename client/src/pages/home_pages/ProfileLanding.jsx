@@ -265,7 +265,7 @@ const ProfileLanding = () => {
 
                           {/* Docs - remember to add icons  */}
 
-                          {filepaths.map((folder) => (
+                          {filepaths !==  null ? filepaths.map((folder) => (
                             <>
                               <small>{folder.split("#")[0]}</small>
                               <div
@@ -284,7 +284,7 @@ const ProfileLanding = () => {
                                 />
                               </div>
                             </>
-                          ))}
+                          )):"loading..."}
                           {/* Docs end   */}
                         </div>
                       </div>
