@@ -1,8 +1,12 @@
+// check where it's used if no place remove it
+
+import styled from 'styled-components'
 /* body {
     margin-top: 20px;
     background: #eee;
 } */
 
+export const Profile_style = styled.div `
 .padding-10 {
     padding: 10px !important;
 }
@@ -375,4 +379,4 @@ time.datebox {
     background-color: #fff;
     margin: 3px auto;
     border: 1px solid;
-}
+}`

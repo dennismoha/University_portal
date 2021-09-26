@@ -53,7 +53,7 @@ exports.signUp = async(req, res, sql) => {
         const [results] = await conn.execute(
             checkUser, [...quer]
         );
-        console.log("results :", results);
+
         if (results.length !== 0) {
             return res.status(400).json({ message: "user exists" });
         }
@@ -61,12 +61,11 @@ exports.signUp = async(req, res, sql) => {
         password = await bcrypt.hash(password, salt);
         querBody.password = password
         const passBody = Object.values(querBody);
-        console.log('passbody ', passBody)
-        const [data] = await db.execute(registerUser, [
+        await db.execute(registerUser, [
             ...passBody
         ]);
 
-        const markprofile = await conn.execute('call career.markProfile(? ,?,@success )', [quer[0], reg_num])
+        await conn.execute('call career.markProfile(? ,?,@success )', [quer[0], reg_num])
 
         const home = await mkdirp(path.dirname(require.main.filename) + "/" + "public/images/docs/" + reg_num);
         console.log("home is :", home);

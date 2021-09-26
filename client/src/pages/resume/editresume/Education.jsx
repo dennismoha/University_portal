@@ -32,28 +32,24 @@ const Education = () => {
         setInputField(values);
     };
 
-    const setInputsValues = (e) =>{
-      console.log(e.target.value)
-      setInputValues({ ...inputValues, [e.target.name]: e.target.value });
-
-    }
-    console.log('inputValues is ', inputValues)
-        let {
-          campus,
-          course,
-          year_of_enroll,
-          year_of_completion,
-          certificate,
-          additional_info,
-        } = "";
+    const setInputsValues = (index, event) =>{
+       const values = [...inputFields];
+       values[index][event.target.name] = event.target.value;
+       setInputValues(values);    
+    }    
+      
 
     const handleSubmit =(e) =>{
-      e.preventDefault();
-      create_resume(JSON.stringify(inputValues))
-      // const k = JSON.stringify(inputFields);
-      // console.log(k)
-      // console.log('--------m', JSON.parse(k))
+      e.preventDefault();      
+      var resumeData = inputValues.map(function (obj) {
+        console.log('obj ::')
+      return   Object.values(obj).map(l => l)        
+      });
+      let payload = { resumeDatatType: "Education", resumeData };  
+      create_resume(payload)
+      
     }
+
     return (
       <>
         <h6>YOUR EDUCATION INFORMATION</h6>
@@ -62,7 +58,7 @@ const Education = () => {
         {inputFields.length !== 0 ? (
           <form onSubmit={handleSubmit}>
             {inputFields.map((inputfield, index) => (
-              <>
+              <div key={index}>
                 <div key={index}>
                   {/* enter campus */}
                   <div className="form-row">
@@ -72,10 +68,10 @@ const Education = () => {
                         type="text"
                         className="form-control"
                         id="inputCampus"
-                        name={`school[${index}][campus]`}
+                        name="campus"
                         placeholder="Enter campus..."
-                        value={campus}
-                        onChange={setInputsValues}
+                        value={inputfield.campus}
+                        onChange={(e) => setInputsValues(index, e)}
                       />
                     </div>
                     <div className="form-group col-md-6">
@@ -84,10 +80,10 @@ const Education = () => {
                         type="text"
                         className="form-control"
                         id="inputCourse"
-                        name={`school[${index}][course]`}
+                        name="course"
                         placeholder="Enter course..."
-                        value={course}
-                        onChange={setInputsValues}
+                        value={inputfield.course}
+                        onChange={(e) => setInputsValues(index, e)}
                       />
                     </div>
                   </div>
@@ -101,10 +97,10 @@ const Education = () => {
                         type="text"
                         className="form-control"
                         id="inputCampus"
-                        name={`school[${index}][year_of_enroll]`}
-                        placeholder="Enter campus..."
-                        value={year_of_enroll}
-                        onChange={setInputsValues}
+                        name="year_of_enroll"
+                        placeholder="year_of_enroll"
+                        value={inputfield.year_of_enroll}
+                        onChange={(e) => setInputsValues(index, e)}
                       />
                     </div>
                     <div className="form-group col-md-4">
@@ -113,10 +109,10 @@ const Education = () => {
                         type="text"
                         className="form-control"
                         id="inputCourse"
-                        name={`school[${index}][year_of_completion]`}
+                        name="year_of_completion"
                         placeholder="Enter course..."
-                        value={year_of_completion}
-                        onChange={setInputsValues}
+                        value={inputfield.year_of_completion}
+                        onChange={(e) => setInputsValues(index, e)}
                       />
                     </div>
                     <div className="form-group col-md-4">
@@ -125,10 +121,10 @@ const Education = () => {
                         type="text"
                         className="form-control"
                         id="inputCourse"
-                        name={`school[${index}][certificate]`}
+                        name="certificate"
                         placeholder="Enter course..."
-                        value={certificate}
-                        onChange={setInputsValues}
+                        value={inputfield.certificate}
+                        onChange={(e) => setInputsValues(index, e)}
                       />
                     </div>
                   </div>
@@ -141,10 +137,10 @@ const Education = () => {
                     <textarea
                       className="form-control"
                       id="exampleFormControlTextarea1"
-                      name={`school[${index}][additional_info]`}
+                      name="additional_info"
                       rows={3}
-                      value={additional_info}
-                      onChange={setInputsValues}
+                      value={inputfield.additional_info}
+                      onChange={(e) => setInputsValues(index, e)}
                     />
                   </div>
                   <div>
@@ -177,7 +173,7 @@ const Education = () => {
                     }}
                   />
                 </div>
-              </>
+              </div>
             ))}
             <button type="submit" className="btn btn-primary">
               Submit

@@ -1,12 +1,52 @@
-import React from 'react'
+import React, {useEffect,useContext,useState} from 'react'
+import ResumeContext from '../../context/resume/ResumeContext';
 import AboutMe from './AboutMe';
 import {ResumeStyles} from './Styles'
 
 
-const DisplayResume = () => {
+
+const DisplayResume = () => {    
+  
+              
+    const { resumeError, fetchedData,fetch_resume } = useContext(ResumeContext);
+    const [education,setEducation] =useState('')
+
+    useEffect(()=>{
+      fetch_resume()
+    },[])
+
+    useEffect(() => {
+      if (fetchedData) {
+        setEducation(fetchedData.Educations);
+      }
+      // if(fetchedData.Educations.length !== 0) {
+      setEducation(fetchedData);
+      // }
+      // console.log("data fetched::", fetchedData.Educations);
+    }, [fetchedData, fetch_resume]);
+    console.log('education is', education)
+    // let school = education.map((school, index) => (
+    //   <div className="resume-wrap d-flex ftco-animate">
+    //     <div className="icon d-flex align-items-center justify-content-center">
+    //       <span className="flaticon-ideas" />
+    //     </div>
+    //     <div className="text pl-3">
+    //       <span className="date">2019-2019</span>
+    //       <h2>Bachelor of Science in Computer Science</h2>
+    //       <span className="position">Cambridge University</span>
+    //       <p>
+    //         A small river named Duden flows by their place and supplies it with
+    //         the necessary regelialia. It is a paradisematic country, in which
+    //         roasted parts of sentences fly into your mouth.
+    //       </p>
+    //     </div>
+    //   </div>
+    // ));
+
     return (
-      <ResumeStyles>
-      <AboutMe />
+      <>
+        <AboutMe />
+        <ResumeStyles>
         <div
           className="ftco-section ftco-no-pb goto-here "
           style={{ marginTop: "70px" }}
@@ -35,22 +75,7 @@ const DisplayResume = () => {
               <div className="col-md-9">
                 <div id="page-1" className="page one">
                   <h2 className="heading">Education</h2>
-                  <div className="resume-wrap d-flex ftco-animate">
-                    <div className="icon d-flex align-items-center justify-content-center">
-                      <span className="flaticon-ideas" />
-                    </div>
-                    <div className="text pl-3">
-                      <span className="date">2014-2015</span>
-                      <h2>Bachelor of Science in Computer Science</h2>
-                      <span className="position">Cambridge University</span>
-                      <p>
-                        A small river named Duden flows by their place and
-                        supplies it with the necessary regelialia. It is a
-                        paradisematic country, in which roasted parts of
-                        sentences fly into your mouth.
-                      </p>
-                    </div>
-                  </div>
+                  {/* {school} */}
                   <div className="resume-wrap d-flex ftco-animate">
                     <div className="icon d-flex align-items-center justify-content-center">
                       <span className="flaticon-ideas" />
@@ -482,6 +507,7 @@ const DisplayResume = () => {
           </div>
         </div>
       </ResumeStyles>
+      </>
     );
 }
 

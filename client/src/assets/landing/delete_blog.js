@@ -1,5 +1,7 @@
 /* stylelint-disable selector-list-comma-newline-after */
 
+import styled from 'styled-components'
+export const Delete_blog = styled.div `
 .blog-header {
     line-height: 1;
     border-bottom: 1px solid #e5e5e5;
@@ -124,4 +126,4 @@ h6 {
 
 .blog-footer p:last-child {
     margin-bottom: 0;
-}
+}`

@@ -37,89 +37,93 @@ const Experience = () => {
       {inputFields.length !== 0 ? (
         <form>
           {inputFields.map((inputfield, index) => (
-            <>
+            <div  key={index}>
+              <div key={index}>
                 {/* enter company */}
-                 
-                <div className="form-group">
-                    <label htmlFor="Company Name">Company name</label>
-                    <input type="text" className="form-control"  aria-describedby="comapnyName" placeholder="Enter company name ..." />
-                   
-                </div>     
 
-              {/* End of company */}
-
-              {/* enter address */}             
                 <div className="form-group">
-                  <label htmlFor="inputAddress">
-                    Address
-                  </label>
+                  <label htmlFor="Company Name">Company name</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    aria-describedby="comapnyName"
+                    placeholder="Enter company name ..."
+                  />
+                </div>
+
+                {/* End of company */}
+
+                {/* enter address */}
+                <div className="form-group">
+                  <label htmlFor="inputAddress">Address</label>
                   <input
                     type="text"
                     className="form-control"
                     id="inputAddress"
                     placeholder="Enter address..."
                   />
-                </div>              
-              {/* End of campus */}
+                </div>
+                {/* End of campus */}
 
-              {/* enter  work enrollment dates */}
-              <div className="form-row">
-                <div className="form-group col-md-6">
-                  <label htmlFor="inputStartYear">START YEAR</label>
-                  <input
-                    type="text"
+                {/* enter  work enrollment dates */}
+                <div className="form-row">
+                  <div className="form-group col-md-6">
+                    <label htmlFor="inputStartYear">START YEAR</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="inputCampus"
+                      placeholder="Enter Start Year..."
+                    />
+                  </div>
+                  <div className="form-group col-md-6">
+                    <label htmlFor="inputEndYea">YEAR OF COMPLETION</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="inputCourse"
+                      placeholder="Enter End Year..."
+                    />
+                  </div>
+                </div>
+                {/* End of campus */}
+
+                <div className="form-group">
+                  <label htmlFor="exampleFormControlTextarea1">
+                    Additional information
+                  </label>
+                  <textarea
                     className="form-control"
-                    id="inputCampus"
-                    placeholder="Enter Start Year..."
+                    id="exampleFormControlTextarea1"
+                    rows={3}
+                    defaultValue={""}
                   />
                 </div>
-                <div className="form-group col-md-6">
-                  <label htmlFor="inputEndYea">YEAR OF COMPLETION</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="inputCourse"
-                    placeholder="Enter End Year..."
-                  />
+                <div>
+                  <span
+                    className="addTexts"
+                    onClick={() => handleRemoveFields(index)}
+                  >
+                    {" "}
+                    <FontAwesomeIcon
+                      icon={faMinus}
+                      style={{ color: "red" }}
+                    />{" "}
+                  </span>
+                  <span className="addTexts" onClick={() => handleAddFields()}>
+                    {" "}
+                    <FontAwesomeIcon icon={faPlus} style={{ color: "blue" }} />
+                  </span>
                 </div>
-              </div>
-              {/* End of campus */}
-
-              <div className="form-group">
-                <label htmlFor="exampleFormControlTextarea1">
-                  Additional information
-                </label>
-                <textarea
-                  className="form-control"
-                  id="exampleFormControlTextarea1"
-                  rows={3}
-                  defaultValue={""}
+                <div
+                  style={{
+                    borderBottom: "3px solid blue",
+                    marginTop: "10px",
+                    marginBottom: "10px",
+                  }}
                 />
               </div>
-              <div>
-                <span
-                  className="addTexts"
-                  onClick={() => handleRemoveFields(index)}
-                >
-                  {" "}
-                  <FontAwesomeIcon
-                    icon={faMinus}
-                    style={{ color: "red" }}
-                  />{" "}
-                </span>
-                <span className="addTexts" onClick={() => handleAddFields()}>
-                  {" "}
-                  <FontAwesomeIcon icon={faPlus} style={{ color: "blue" }} />
-                </span>
-              </div>
-              <div
-                style={{
-                  borderBottom: "3px solid blue",
-                  marginTop: "10px",
-                  marginBottom: "10px",
-                }}
-              />
-            </>
+            </div>
           ))}
           <button type="submit" className="btn btn-primary">
             Submit

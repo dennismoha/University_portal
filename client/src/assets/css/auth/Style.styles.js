@@ -32,7 +32,7 @@ import styled from "styled-components";
 
 
 
-export const Styles = styled.div`	
+export const Styles = styled.div `	
 
 html, body {height: 100%; font-family: 'Roboto', sans-serif;font-weight:400;background:#F6F8FA;}
 .floatleft {float:left}

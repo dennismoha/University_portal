@@ -37,7 +37,7 @@ exports.addCollege = async(req, res, next) => {
     college_name = college_name + " , " + location;
 
     try {
-        conn = await db.getConnection();
+        let conn = await db.getConnection();
         const [results] = await conn.execute(
             "call career.createCollege( ? ,?,@collegenames)", [college_name, campus]
         );

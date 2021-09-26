@@ -112,8 +112,7 @@ const StudentRegisterState = (props) => {
             }
         };
 
-        const loadUser = async() => {
-            console.log('caaalllllllleddddd')
+        const loadUser = async() => {           
             if (localStorage.token) {
                 setAuthToken(localStorage.token);
             }
@@ -139,8 +138,7 @@ const StudentRegisterState = (props) => {
             }
 
             try {
-                const res = await Axios.get("/student/checkDocs");
-                console.log("file response is", res.data);
+                const res = await Axios.get("/student/checkDocs");                
                 dispatch({
                     type: FILE_PATHS,
                     payload: res.data,

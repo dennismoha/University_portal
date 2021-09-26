@@ -10,6 +10,7 @@
         "dev": "concurrently \"npm run server\" \"npm run client\""
     },
     "dependencies": {
+        "@sendgrid/mail": "^7.4.7",
         "bcrypt": "^5.0.1",
         "concurrently": "^6.2.1",
         "cors": "^2.8.5",
@@ -25,6 +26,7 @@
         "morgan": "~1.9.1",
         "multer": "^1.4.3",
         "mysql2": "^2.2.5",
+        "react-particles-js": "^3.5.3",
         "react-select": "^4.3.1",
         "react-typed": "^1.2.0"
     }

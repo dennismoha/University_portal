@@ -1,8 +1,11 @@
+// IF NOT IN USE DELETE THIS MODULE
+
+import styled from 'styled-components'
+
+export const viewprofile = styled.div `
 /* body {
     margin-top: 20px;
 } */
-
-
 /* User Cards */
 
 .user-box {
@@ -450,3 +453,4 @@
     -webkit-box-shadow: 0 11px 7px 0 rgba(0, 0, 0, 0.19), 0 13px 25px 0 rgba(0, 0, 0, 0.3);
     box-shadow: 0 11px 7px 0 rgba(0, 0, 0, 0.19), 0 13px 25px 0 rgba(0, 0, 0, 0.3);
 }
+`

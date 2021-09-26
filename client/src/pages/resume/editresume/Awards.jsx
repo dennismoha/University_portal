@@ -37,7 +37,7 @@ const Experience = () => {
       {inputFields.length !== 0 ? (
         <form>
           {inputFields.map((inputfield, index) => (
-            <>
+            <div key={index}>
               {/* enter company */}
 
               <div className="form-group">
@@ -112,7 +112,7 @@ const Experience = () => {
                   marginBottom: "10px",
                 }}
               />
-            </>
+            </div>
           ))}
           <button type="submit" className="btn btn-primary">
             Submit

@@ -1,19 +1,18 @@
-var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
 // var logger = require("morgan");
-const dotenv = require("dotenv").config();
+require("dotenv").config();
 const expressValidator = require("express-validator");
 const cors = require('cors')
 
 var AdminRouter = require("./routes/Admin/Auth");
 var authRouter = require("./routes/auth");
 const schoolRouter = require("./routes/school/School");
-// const studentRouter = require("./routes/student/Student");
 
-var app = express();
+
+var app = express().use("*", cors());
 app.use(cors({ origin: true, credentials: true }));
-/*  To avoid Cors errors */
+/*  Alternative To avoid Cors errors */
 // app.use((req, res, next) => {
 //     console.log(req.headers)
 //     res.setHeader("Access-Control-Allow-Origin", "*");
@@ -33,9 +32,8 @@ app.use(cors({ origin: true, credentials: true }));
 //     next();
 // });
 
-// // view engine setup
-// app.set("views", path.join(__dirname, "views"));
-// app.set("view engine", "jade");
+
+app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "client/build")));
 // app.use(logger("dev"));
 app.use(express.json());
@@ -43,7 +41,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(expressValidator());
 
 
-app.use(express.static(path.join(__dirname, "public")));
 
 
 app.use("/api/Admin/Auth", AdminRouter);
@@ -85,3 +82,19 @@ app.listen(process.env.PORT || 8000, (err) => {
             console.log("server up successfully");
     }
 });
+
+/* server {
+#  listen 80;
+#  root /var/www/react/_work/react-app/react-app/build/;
+ # index index.html index.htm;
+ location / {
+
+
+        #proxy_http_version 1.1;
+        #proxy_set_header Upgrade $http_upgrade;
+        #proxy_set_header Connection 'upgrade';
+        #proxy_set_header Host $host;
+        #proxy_cache_bypass $http_upgrade;
+        try_files $uri $uri/ /index.html;
+  }
+}*/

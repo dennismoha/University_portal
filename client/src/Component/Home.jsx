@@ -1,27 +1,27 @@
 import React from 'react'
 import { LandingStyles } from "../assets/landing/Landing.styles.js";
+import Typed from "react-typed";
+// import Particles from "react-particles-js";
 
 const Home = props => {
 
   return (
-    <LandingStyles>
-    <div  style={{backgroundColor:"red"}}>
-     <div>
-        {/* <div className="topleft">
-          <p>Logo</p>
-        </div> */}
-        <div className="middle">
-          <h1>COMING SOON</h1>
-          <hr />
-          <p>35 days</p>
+    <>
+      <LandingStyles>
+        <div className="header-wrapper">
+          <div className="main-info">
+            <h1>Coming soon</h1>          
+            <Typed
+              className="typed-text"
+              typeSpeed={60}
+              backSpeed={60}
+              loop
+              strings={["Coming soon","create resume", "upload Resume", "Download resume"]}
+            />
+          </div>
         </div>
-        {/* <div className="bottomleft">
-          <p>Some text</p>
-        </div> */}
-      </div>
-      </div>
-
-    </LandingStyles>
+      </LandingStyles>
+    </>
   );
 }
 

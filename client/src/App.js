@@ -9,6 +9,7 @@ import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 import NotFound from './pages/Error/NotFound';
 import ForgotPassword from './pages/auth/ForgotPassword';
+import Contact from './pages/auth/Contact';
 import StudentRegisterState from './context/Register/StudentRegisterState';
 // import Profile from './pages/home_pages/Profile';
 import Profile from './pages/home_pages/ProfileLanding';
@@ -20,6 +21,7 @@ import Navbar from './layout/Navbar';
 import DisplayResume from './pages/resume/DisplayResume';
 import CreateResume from './pages/resume/editresume/CreateResume';
 import ResumeState from './context/resume/ResumeState';
+
 
 
 
@@ -41,6 +43,7 @@ function App() {
 
                 <Route path="/login" exact component={Login} />
                 <Route path="/register" exact component={Register} />
+                <Route path="/contact" exact component={Contact} />
                 <Route
                   path="/recoverpassword"
                   exact

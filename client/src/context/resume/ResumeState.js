@@ -8,27 +8,28 @@ import ResumeContext from "./ResumeContext";
 import ResumeReducer from "./ResumeReducer";
 import Axios from "../../AxiosInstance";
 import {
- CREATE_RESUME,
-  
+  CREATE_RESUME,
+  RESUME_DATA,
+  ERROR_FETCHING_RESUME_DATA,
 } from "../ActionTypes";
 
-import { setAuthToken } from "../../axios/SetAuthToken";
 
 const ResumeState = (props) => {
         const initialState = {
-            hold_resume:null
+            hold_resume:null,
+            fetchedData:null,
+            resumeError:null
            
         };
 
         const [state, dispatch] = useReducer(ResumeReducer, initialState);
 
-        // @RULE : REGISTER STUDENT
-        const create_resume = async(FormData) => {
-            // dispatch({ type: LOADING, payload: true });
-            console.log("reached here ", FormData);
-        
+        // @RULE : CREATE RESUME
+
+        const create_resume = async(FormData) => {           
+            console.log("reached here ", FormData);        
             try {
-                const res = await Axios.post("/student/createresume/", FormData,);
+                const res = await Axios.post("/student/createresume/", JSON.stringify(FormData));
                 dispatch({
                   type: CREATE_RESUME,
                   payload: res.data,
@@ -44,14 +45,38 @@ const ResumeState = (props) => {
             }
         };
 
+        //@RULE: FETCH RESUME
+        
+        const fetch_resume = async () => {          
+          try {
+            const res = await Axios.get(
+              "/student/fetchResume/"             
+            );
+            console.log("triggered", res.data);
+            dispatch({
+              type: RESUME_DATA,
+              payload: res.data,
+            });
+          } catch (error) {           
+            console.log("error is ", error);
+            dispatch({
+              type: ERROR_FETCHING_RESUME_DATA,
+              payload:"ERROR FETCHING RESUME DATA. TRY AGAIN OR CONTACT SUPPPORT",
+            });
+          }
+        };
+
        
         console.log("state::", state);
 
         return (
           <ResumeContext.Provider
             value={{
-              create_resume ,
-              hold_resume : state.hold_resume,
+              hold_resume: state.hold_resume,
+              fetchedData: state.fetchedData,
+              resumeError: state.resumeError,
+              create_resume,
+              fetch_resume,
             }}
           >
             {" "}

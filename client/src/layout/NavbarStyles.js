@@ -1,34 +1,60 @@
 import styled from 'styled-components'
-import schoolBack from "../images/UniversityOfNairobiTowersProject_banner.jpg";
 
-//.bgimg {
-// //   background-image: url('/w3images/forestbridge.jpg');
-// background-color:blue;
-//   height: 100%;
-//   background-position: center;
-//   background-size: cover;
-//   position: relative;
-//   color: white;
-//   font-family: "Courier New", Courier, monospace;
-//   font-size: 25px;
-// }
 
-//body, html {
-//   height: 100%;
-//   margin: 0;
-// }
-
-export const LandingStyles = styled.div `
+export const Styles = styled.div `
+  @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+  body {
+    font-family: "Roboto", sans-serif;
+  }
   :root {
     --primary-white: #fff;
     --primary-orange: rgb(96, 156, 131);
     --primary-dark: rgba(255, 255, 255, 0);
   }
 
+  .logo {
+    width: 5.75rem;
+  }
+  nav {
+    z-index: 2;
+  }
+
+  nav a.nav-link {
+    font-weight: 500;
+    letter-spacing: 0.0375rem;
+    cursor: pointer;
+  }
+
+  nav ul li {
+    text-transform: uppercase;
+  }
+
+  .navbar-nav > li > a {
+    color: var(--primary-white) !important;
+    margin-right: 0.75rem;
+    margin-left: 0.75rem;
+    border-top: 0.1875rem solid var(--primary-dark);
+  }
+
+  .navbar-brand {
+    max-width: 17.25rem;
+    padding: 0 !important;
+    height: 6rem !important;
+  }
+
+  .navbar-nav > li > a.active,
+  .navbar-nav > li > a.active:focus {
+    border-top: 0.1875rem solid var(--primary-orange);
+  }
+  .navbar-nav > li > a:hover {
+    border-top: 0.1875rem solid var(--primary-orange);
+  }
+
   .header-wrapper {
     margin-top: 2px;
     position: relative;
-    background: url(${schoolBack}) no-repeat;
+    background: url(./assets/UniversityOfNairobiTowersProject_banner.jpg)
+      no-repeat;
     background-size: cover;
     background-position: center;
     height: 90vh;
@@ -46,17 +72,15 @@ export const LandingStyles = styled.div `
     align-items: center;
     text-align: center;
   }
-
   .main-info h1 {
     color: #fff;
     text-transform: uppercase;
   }
 
   /************* Type Text *******************************/
-
   .typed-text {
-    font-size: 6rem;
-    color: white;
+    font-size: 2rem;
+    color: var(--primary-white);
     background-color: rgba(0, 0, 0, 0.616);
   }
 

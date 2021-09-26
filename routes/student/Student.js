@@ -72,7 +72,23 @@ router.post("/createprofile", Auth, Students.createStudentProfile);
 // @RULE: POST MEDIA
 router.post("/addmedia", Auth, cpUpload, Students.uploadStudentDocs);
 router.get('/checkDocs', Auth, Students.checkFileExists)
+
+//@RULE : CRUD RESUME
 router.post("/createresume", Auth, Students.createResume);
+router.get("/fetchResume/", Auth, Students.fetchResume);
+
+//@Rule: send email
+router.post("/sendmail/", Students.sendMailToAdmin);
+
+//@Rule: send email verification
+router.post("/verificationmail/", Students.sendEmailVerification);
+
+//@Rule: Reset Password
+router.get("/passwordreset/:token", Students.ResetPassword);
+
+//@Rule: updated Password
+router.post("/updatepassword/", Students.updatePassword);
+
 
 
 

@@ -1,8 +1,9 @@
 import React from 'react'
+import { Styles } from "../../assets/css/auth/Style.styles.js";
 
 const ForgotPassword = () => {
     return (
-      <>
+      <Styles>
         <div className="error-pagewrap">
           <div className="error-page-int">
             <div className="text-center ps-recovered">
@@ -50,7 +51,7 @@ const ForgotPassword = () => {
             </div> */}
           </div>
         </div>
-      </>
+      </Styles>
     );
 }
 

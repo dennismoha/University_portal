@@ -1,11 +1,14 @@
 import React,{useContext,useEffect,Fragment} from "react";
 import {NavLink} from 'react-router-dom'
 import studentRegisterContext from '../context/Register/studentRegisterContext'
+import  {Styles} from './NavbarStyles'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = (props) => {
     const authContext = useContext(studentRegisterContext);
 
-  const { isAuthenticated, logout, user, loadUser } = authContext;
+  const { isAuthenticated, logout,  loadUser } = authContext;
   useEffect(() => {
     loadUser();
     // eslint-disable-next-line
@@ -19,12 +22,12 @@ const Navbar = (props) => {
   const guestLinks = (
     <Fragment>
         <li className="nav-item">
-                <NavLink to='/register' className="nav-link active" >
+                <NavLink to='/register' className="nav-link active" style={{color:"white"}} >
                   Singup
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to ='/login' className="nav-link" href="/#">
+                <NavLink to ='/login' className="nav-link" href="/#"  style={{color:"white"}}>
                   Login
                 </NavLink>
               </li>
@@ -49,9 +52,9 @@ const Navbar = (props) => {
         </NavLink>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="/#">
+        <NavLink className="nav-link" to="/contact">
           contact admin
-        </a>
+        </NavLink>
       </li>
       <li className="nav-item">
         <a className="nav-link " href="/#">
@@ -59,9 +62,9 @@ const Navbar = (props) => {
           <span class="sr-only">unread messages</span>
         </a>
       </li>
-      <li class="nav-item dropdown">
+      <li className="nav-item dropdown">
         <a
-          class="nav-link dropdown-toggle"
+          className="nav-link dropdown-toggle"
           href="/#"
           id="navbarDropdown"
           role="button"
@@ -90,50 +93,45 @@ const Navbar = (props) => {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarTogglerDemo03"
-          aria-controls="navbarTogglerDemo03"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon" />
-        </button>
-        <a className="navbar-brand" href="/#">
-          Navbar
-        </a>
-        <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
-          <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li className="nav-item active">
-              <NavLink to='/' className="nav-link" >
-                Home <span className="sr-only">(current)</span>
-              </NavLink>
-            </li>           
-            {/* <li className="nav-item">
-              <a className="nav-link disabled">
-                Disabled
-              </a>
-            </li> */}
-          </ul>
-          <ul className="nav justify-content-end">
-          {!isAuthenticated ? guestLinks: authLinks}
-           
-            {/* <li className="nav-item">
-                <a className="nav-link" href="/#">
-                Link
-                </a>
-            </li>
-            <li className="nav-item">
-                <a className="nav-link disabled" href="/#">
-                Disabled
-                </a>
-            </li> */}
-          </ul>
-        </div>
-      </nav>
+      <Styles>
+        <nav className="navbar navbar-expand-lg navbar-light bg-info">
+          <div className="container">
+            <a className="navbar-brand" href="/#">
+              {/* <img className="logo" src={logo} alt="logo" /> */}
+            </a>
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <FontAwesomeIcon icon={faBars} style={{ color: "white" }} />
+            </button>
+            <div
+              className="collapse navbar-collapse"
+              id="navbarSupportedContent"
+            >
+              <ul className="navbar-nav ml-auto">
+                <li className="nav-item active">
+                  <a className="nav-link" href="/#">
+                    Home <span className="sr-only">(current)</span>
+                  </a>
+                </li>               
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/contact">
+                    contacts
+                  </NavLink>
+                </li>
+                {!isAuthenticated ? guestLinks : authLinks}
+               
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </Styles>
       {props.children}
     </>
   );
