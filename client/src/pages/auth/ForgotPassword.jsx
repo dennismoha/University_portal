@@ -1,9 +1,35 @@
-import React from 'react'
+import React,{useState, useEffect,useContext} from 'react'
 import { Styles } from "../../assets/css/auth/Style.styles.js";
+import UtilContext from "../../context/utils/UtilContext";
 
 const ForgotPassword = () => {
+     const [studentEmail, setEmail] = useState({userEmail: ""});
+     let {  userEmail} = studentEmail;
+      let {
+        successPasswordResetMail,
+        erropasswordresetemail,
+        fetchpasswordresetmail,
+      } = useContext(UtilContext);
+
+      
+   const onchange = (e) => {
+     setEmail({
+       ...studentEmail,
+       [e.target.name]: e.target.value,
+     });
+   };
+
+   const onsubmit = (e) => {
+     e.preventDefault();
+      fetchpasswordresetmail(studentEmail);
+     // clearErrors();
+   };
+
     return (
       <Styles>
+        {successPasswordResetMail ? successPasswordResetMail : null}
+        {erropasswordresetemail ? erropasswordresetemail : null}
+
         <div className="error-pagewrap">
           <div className="error-page-int">
             <div className="text-center ps-recovered">
@@ -17,19 +43,18 @@ const ForgotPassword = () => {
                     Enter your email address and your password will be reset and
                     emailed to you.
                   </p>
-                  <form action="#" id="loginForm">
+                  <form onSubmit={onsubmit}>
                     <div className="form-group">
                       <label className="control-label" htmlFor="username">
                         Email
                       </label>
                       <input
-                        type="text"
-                        placeholder="example@gmail.com"
-                        title="Please enter you email adress"
+                        type="Email"
+                        placeholder="Enter your Email"
+                        onChange={onchange}
+                        name="userEmail"
+                        value={userEmail}
                         required
-                        defaultValue
-                        name="username"
-                        id="username"
                         className="form-control"
                       />
                       <span className="help-block small">
@@ -43,12 +68,6 @@ const ForgotPassword = () => {
                 </div>
               </div>
             </div>
-            {/* <div className="text-center login-footer">
-              <p>
-                Copyright © 2018. All rights reserved. Template by{" "}
-                <a href="https://colorlib.com/wp/templates/">C</a>
-              </p>
-            </div> */}
           </div>
         </div>
       </Styles>

@@ -166,6 +166,8 @@ exports.sendEmailVerification = async(req, res) => {
     let token, tokenExpiration;
     sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
+    console.log('reached here', req.body)
+
     crypto.randomBytes(32, (err, buffer) => {
             if (err) {
                 console.log(err);
@@ -187,14 +189,14 @@ exports.sendEmailVerification = async(req, res) => {
             from: process.env.SENDGRID_FROM, // Change to your verified sender
             subject: "password Reset",
             text: "If this email was not sent by you please contact us",
-            html: `<div><p>Click on the link below to change your password... <a href="http:localhost:8000/api/users/passwordreset/${token}"" target="new"></p>
-                        <a href="http://localhost:8000/api/users/passwordreset/${token}">reset password</a>
+            html: `<div><p>Click on the link below to change your password... <a href="http:localhost:8000/api/student/passwordreset/${token}"" target="new"></p>
+                        <a href="http://localhost:3000/resetpassword/${token}">reset password</a>
                     </div>
             `,
         };
         const result = await sgMail.send(msg)
         console.log('results are ', result)
-        return res.status(200).json({ message: msg });
+        return res.status(200).json({ message: "Check your email or spam. if no message try again or verify you entered correct email" });
 
     } catch (err) {
         console.log('error is ', err)
@@ -242,9 +244,10 @@ exports.ResetPassword = async(req, res) => {
 
 exports.updatePassword = async(req, res) => {
     const confirmToken = Date.now();
-    // delete req.body.confirm_password;
-    let { userId, token, password } = req.body;
-    let newpassword;
+    delete req.body.confirm_password;
+    let { email, token, password } = req.body;
+    let newpassword, userId;
+    userId = email
 
     try {
         let conn = await db.getConnection();
@@ -279,19 +282,19 @@ exports.sendMailToAdmin = (req, res) => {
         process.env.SENDGRID_API_KEY
     );
 
-    let  {Email,first_name,last_name,Phone_number,Message } = req.body
+    let { Email, first_name, last_name, Phone_number, Message } = req.body
 
-    console.log(req.body)    
-        const msg = {
-            to:Email, // Change to your recipient
-            from: process.env.SENDGRID_FROM, // Change to your verified sender
-            subject: `First Name: ${first_name} - LastName: ${last_name} - PhoneNumber:${Phone_number}  `,
-            text: `received message from  ${first_name}`,
-            html: `<strong>${Message}</strong>`,
-        };
-        sgMail
-            .send(msg)
-            .then(() => {
+    console.log(req.body)
+    const msg = {
+        to: Email, // Change to your recipient
+        from: process.env.SENDGRID_FROM, // Change to your verified sender
+        subject: `First Name: ${first_name} - LastName: ${last_name} - PhoneNumber:${Phone_number}  `,
+        text: `received message from  ${first_name}`,
+        html: `<strong>${Message}</strong>`,
+    };
+    sgMail
+        .send(msg)
+        .then(() => {
 
             console.log("Email sent");
             res.json('email sent')

@@ -21,6 +21,8 @@ import Navbar from './layout/Navbar';
 import DisplayResume from './pages/resume/DisplayResume';
 import CreateResume from './pages/resume/editresume/CreateResume';
 import ResumeState from './context/resume/ResumeState';
+import ChangePassword from './pages/auth/ChangePassword';
+ 
 
 
 
@@ -44,6 +46,7 @@ function App() {
                 <Route path="/login" exact component={Login} />
                 <Route path="/register" exact component={Register} />
                 <Route path="/contact" exact component={Contact} />
+                <Route path="/resetpassword/:token" exact component={ChangePassword} />
                 <Route
                   path="/recoverpassword"
                   exact

@@ -82,52 +82,59 @@ const Register = () => {
               </div>
               <div className="col-md-8 py-5 border">
                 <h4 className="pb-4">Please fill with your details</h4>
-                <form onSubmit={onsubmit}>
-                  <div className="form-row">
-                    <div className="form-group col-md-6">
-                      <input
-                        className="form-control"
-                                            type="text"
-                                            onChange={onchange}
-                                            name="reg_num"
-                                            value={studentDetails.reg_num}
-                                            placeholder="Enter your registration number"
-                                            required
-                      />
+                {success ? (
+                  "successfully signed up"
+                ) : (
+                  <form onSubmit={onsubmit}>
+                    <div className="form-row">
+                      <div className="form-group col-md-6">
+                        <input
+                          className="form-control"
+                          type="text"
+                          onChange={onchange}
+                          name="reg_num"
+                          value={studentDetails.reg_num}
+                          placeholder="Enter your registration number"
+                          required
+                        />
+                      </div>
+                      <div className="form-group col-md-6">
+                        <input
+                          className="form-control"
+                          type="email"
+                          placeholder="Enter your Emails"
+                          onChange={onchange}
+                          name="Email"
+                          value={studentDetails.email}
+                          required
+                        />
+                      </div>
                     </div>
-                    <div className="form-group col-md-6">
-                      <input
-                        className="form-control"
-                        type="email"
-                        placeholder="Enter your Emails"
-                        onChange={onchange}
-                        name="Email"
-                        value={studentDetails.email}
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div className="form-row">
-                    <div className="form-group col-md-6">
-                      <input
-                        id="Mobile No."
-                        name="Mobile No."
-                        placeholder="Mobile No."
-                        className="form-control"
-                        required="required"
-                        type="text"
-                      />
-                    </div>
-                    <div className="form-group col-md-6">
-                      <select id="inputState" className="form-control">
-                        <option selected>Choose ...</option>
-                        <option> New Buyer</option>
-                        <option> Auction</option>
-                        <option> Complaint</option>
-                        <option> Feedback</option>
-                      </select>
-                    </div>
-                    <div className="form-group col-md-12">
+                    <div className="form-row">
+                      <div className="form-group col-md-6">
+                        <input
+                          type="password"
+                          className="form-control"
+                          onChange={onchange}
+                          name="password"
+                          value={studentDetails.password}
+                          placeholder="Password"
+                          required
+                        />
+                      </div>
+                      <div className="form-group col-md-6">
+                        <input
+                          type="password"
+                          className="form-control"
+                          placeholder="confirm password"
+                          onChange={onchange}
+                          name="confirm_password"
+                          value={studentDetails.confirm_password}
+                          required
+                        />
+                      </div>
+
+                      {/* <div className="form-group col-md-12">
                       <textarea
                         id="comment"
                         name="comment"
@@ -136,9 +143,10 @@ const Register = () => {
                         className="form-control"
                         defaultValue={""}
                       />
+                    </div> */}
                     </div>
-                  </div>
-                  <div className="form-row">
+                    {error ? <p style={{ color: "red" }}>{error}</p> : null}
+                    {/* <div className="form-row">
                     <div className="form-group">
                       <div className="form-group">
                         <div className="form-check">
@@ -161,13 +169,14 @@ const Register = () => {
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="form-row">
-                    <button type="button" className="btn btn-danger">
-                      Submit
-                    </button>
-                  </div>
-                </form>
+                  </div> */}
+                    <div className="form-row">
+                      <button type="submit" className="btn btn-danger">
+                        Submit
+                      </button>
+                    </div>
+                  </form>
+                )}
               </div>
             </div>
           </div>
