@@ -1,60 +1,56 @@
-var express = require("express");
-var path = require("path");
-// var logger = require("morgan");
-require("dotenv").config();
-const expressValidator = require("express-validator");
+var express = require('express')
+var path = require('path')
+    // var logger = require("morgan");
+require('dotenv').config()
+const expressValidator = require('express-validator')
 const cors = require('cors')
 
-var AdminRouter = require("./routes/Admin/Auth");
-var authRouter = require("./routes/auth");
-const schoolRouter = require("./routes/school/School");
+var AdminRouter = require('./routes/Admin/Auth')
+var authRouter = require('./routes/auth')
+const schoolRouter = require('./routes/school/School')
 
+var app = express().use('*', cors())
+app.use(cors({ origin: true, credentials: true }))
+    /*  Alternative To avoid Cors errors */
+    // app.use((req, res, next) => {
+    //     console.log(req.headers)
+    //     res.setHeader("Access-Control-Allow-Origin", "*");
+    //     res.setHeader(
+    //         "Access-Control-Allow-Methods",
+    //         "OPTIONS, GET, POST, PUT, PATCH, DELETE"
+    //     );
+    //     res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+    //     // res.setHeader(
+    //     //   "Access-Control-Allow-Headers",
+    //     //   "Origin, X-Requested-With, Content-Type, Accept"
+    //     // );
+    //     // res.setHeader(
+    //     //   "Access-Control-Allow-Headers",
+    //     //   "X-Requested-With,content-type"
+    //     // );
+    //     next();
+    // });
 
-var app = express().use("*", cors());
-app.use(cors({ origin: true, credentials: true }));
-/*  Alternative To avoid Cors errors */
-// app.use((req, res, next) => {
-//     console.log(req.headers)
-//     res.setHeader("Access-Control-Allow-Origin", "*");
-//     res.setHeader(
-//         "Access-Control-Allow-Methods",
-//         "OPTIONS, GET, POST, PUT, PATCH, DELETE"
-//     );
-//     res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-//     // res.setHeader(
-//     //   "Access-Control-Allow-Headers",
-//     //   "Origin, X-Requested-With, Content-Type, Accept"
-//     // );
-//     // res.setHeader(
-//     //   "Access-Control-Allow-Headers",
-//     //   "X-Requested-With,content-type"
-//     // );
-//     next();
-// });
+app.use(express.static(path.join(__dirname, 'public')))
+    // app.use(express.static(path.join(__dirname, "client/build")));
+    // app.use(logger("dev"));
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
+app.use(expressValidator())
 
+app.use('/api/Admin/Auth', AdminRouter)
+app.use('/api/auth', authRouter)
+app.use('/api/school', schoolRouter)
+app.use('/api/student', require('./routes/student/Student'))
+app.use('/api/resume', require('./routes/student/Resume'))
 
-app.use(express.static(path.join(__dirname, "public")));
-app.use(express.static(path.join(__dirname, "client/build")));
-// app.use(logger("dev"));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(expressValidator());
+// if (process.env.NODE_ENV === 'production') {
+//     app.use(express.static('client/build'))
 
-
-
-
-app.use("/api/Admin/Auth", AdminRouter);
-app.use("/api/auth", authRouter);
-app.use("/api/school", schoolRouter);
-app.use("/api/student", require("./routes/student/Student"));
-
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('client/build'))
-
-    app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
-    })
-}
+//     app.get('*', (req, res) => {
+//         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+//     })
+// }
 
 // catch 404 and forward to error handler
 // app.use(function(req, res, next) {
@@ -78,10 +74,10 @@ app.listen(process.env.PORT || 8000, (err) => {
     {
         err
             ?
-            console.log("error server starting ", err) :
-            console.log("server up successfully");
+            console.log('error server starting ', err) :
+            console.log('server up successfully')
     }
-});
+})
 
 /* server {
 #  listen 80;

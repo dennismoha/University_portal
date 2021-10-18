@@ -43,6 +43,7 @@ exports.singleUser = (req, res, next) => {
             "call career.singleUser(?, @fname, @last_names, @Emails, @reg_nums, @campuss, @colleges, @courses, @disciplines, @genders, @ages, @enroll_dates, @finish_dates)", [userIds]
         )
         .then((user) => {
+            console.log('user is', user[0][0][0]);
             return res.json(user[0][0][0]);
         })
         .catch((error) => {

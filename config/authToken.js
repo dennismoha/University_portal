@@ -1,27 +1,27 @@
 /*
     THIS IS CONSISTS OF  JWT AUTHENTICATION TOKEN
 */
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken')
 
 module.exports = (req, res, next) => {
-    const authHeader = req.get("Authorization");
+    const authHeader = req.get('Authorization')
 
     if (!authHeader) {
-        return res.status(403).json({ message: "Not Authenticated" });
+        return res.status(403).json({ message: 'Not Authenticated' })
     }
-    const token = authHeader.split(" ")[1];
-    let decodedToken;
+    const token = authHeader.split(' ')[1]
+    let decodedToken
     try {
-        decodedToken = jwt.verify(token, process.env.SECRET);
+        decodedToken = jwt.verify(token, process.env.SECRET)
     } catch (err) {
-        err.status = 500;
-        throw err;
+        err.status = 500
+        return res.status(500).json({ error: err.message })
     }
     if (!decodedToken) {
-        return res.status(403).json({ message: "Not Authenticated" });
+        return res.status(403).json({ message: 'Not Authenticated' })
     }
-    req.userId = decodedToken.userId;
+    req.userId = decodedToken.userId
     req.reg_num = decodedToken.reg_num
     console.log('decoded token is ', req.reg_num)
-    next();
-};
+    next()
+}

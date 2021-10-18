@@ -662,7 +662,7 @@ const ViewProfile = () => {
                             <input
                               type="date"
                               className="form-control"
-                              id="inputFirstName"
+                              id="inputdateofbirth"
                               placeholder="date of birth"
                               name="age"
                               onChange={onchange}
@@ -670,15 +670,17 @@ const ViewProfile = () => {
                             />
                           </div>
                           <div className="form-group col-md-4">
-                            <label htmlFor="inputState">Enroll Date</label>
+                            <label htmlFor="inputState">
+                              Enroll Date
+                            </label>
                             <input
                               type="date"
                               className="form-control"
-                              id="inputenrolldate"
-                              placeholder="enroll date"
+                              id="inputenrolldate"                             
                               name="enroll_date"
                               onChange={onchange}
-                              value={enroll_date}
+                              value={studentDetails.enroll_date}
+                              placeholder="enroll date"                              
                             />
                           </div>
                           <div className="form-group col-md-4">
@@ -686,11 +688,11 @@ const ViewProfile = () => {
                             <input
                               type="date"
                               className="form-control"
-                              id="inputFirstName"
+                              id="inputfinishdate"
                               placeholder="Finish date"
                               name="finish_date"
                               onChange={onchange}
-                              value={finish_date}
+                              value={studentDetails.finish_date}
                             />
                           </div>
                         </div>
@@ -717,12 +719,7 @@ const ViewProfile = () => {
                     <div className="tab-pane" id="edit_schooldocs">
                       <div
                         className="form-group row"
-                        style={{
-                          display:
-                            filepaths[0].split("#")[0] === "cover_letter"
-                              ? "none"
-                              : null,
-                        }}
+                      
                       >
                         <label className="col-lg-3 col-form-label form-control-label">
                           Curriculum vitae
@@ -739,12 +736,7 @@ const ViewProfile = () => {
                       {/* cover letter */}
                       <div
                         className="form-group row"
-                        style={{
-                          display:
-                            filepaths[1].split("#")[0] === "cover_letter"
-                              ? "none"
-                              : null,
-                        }}
+                       
                       >
                         <label className="col-lg-3 col-form-label form-control-label">
                           Cover letter
@@ -762,12 +754,12 @@ const ViewProfile = () => {
                       {/* resume */}
                       <div
                         className="form-group row"
-                        style={{
-                          display:
-                            filepaths[2].split("#")[2] === "certificates"
-                              ? "none"
-                              : null,
-                        }}
+                        // style={{
+                        //   display:
+                        //     filepaths[2].split("#")[2] === "certificates"
+                        //       ? "none"
+                        //       : null,
+                        // }}
                       >
                         <label className="col-lg-3 col-form-label form-control-label">
                           certificate
