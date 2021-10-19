@@ -31,8 +31,11 @@ app.use(cors({ origin: true, credentials: true }))
     //     next();
     // });
 
-app.use(express.static(path.join(__dirname, 'public')))
-    // app.use(express.static(path.join(__dirname, "client/build")));
+// app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'client/build')))
+app.get('/', (req, res) => {
+        res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
+    })
     // app.use(logger("dev"));
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
